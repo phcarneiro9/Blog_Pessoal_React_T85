@@ -115,7 +115,4 @@ O Blog Pessoal foi desenvolvido com o objetivo de colocar em prática conceitos 
 
 GitHub: [phcarneiro9](https://github.com/phcarneiro9)
 
----
-
-Desenvolvido durante o **Bootcamp Full Stack Java da Generation Brasil**.
 
