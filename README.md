@@ -1,95 +1,119 @@
-# Projeto Portfólio Pessoal
+# 📝 Blog Pessoal React
 
----
+Projeto de **Blog Pessoal** desenvolvido em **React + TypeScript**, com o objetivo de criar uma aplicação moderna para publicação e compartilhamento de conteúdos.
 
-<div align="center"> 
-<img src="https://img.shields.io/badge/HTML-5-orange?style=for-the-badge&logo=html5" alt="HTML Badge" /> 
-<img src="https://img.shields.io/badge/CSS-3-blue?style=for-the-badge&logo=css&logoColor=blue" alt="CSS Badge" /> 
-<img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript&logoColor=yellow" alt="JavaScript Badge" /> 
-</div>
+O projeto utiliza componentização, organização de páginas e componentes reutilizáveis, seguindo boas práticas de desenvolvimento Front-end.
 
-<br />
+## 🚀 Tecnologias utilizadas
 
-O **Projeto Portfólio Pessoal** é um site desenvolvido com **HTML, CSS e JavaScript**, com o objetivo de apresentar minhas informações profissionais, projetos e formas de contato de maneira clara, interativa e responsiva.
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router DOM
 
-O projeto consome dados da **API do GitHub**, permitindo que informações do perfil e repositórios sejam carregadas dinamicamente.
+## ✨ Funcionalidades
 
----
+* Página inicial
+* Cadastro de usuários
+* Login
+* Navegação entre páginas
+* Componentes reutilizáveis
+* Navbar
+* Footer
+* Layout responsivo
+* Estrutura preparada para integração com o Backend
 
-## Funcionalidades
+## 📂 Estrutura do projeto
 
-* Estrutura desenvolvida com **HTML semântico**
-* Estilização com **CSS**
-* Layout responsivo para desktop, tablet e mobile
-* Integração com a **API do GitHub**
-* Exibição dinâmica das informações do perfil
-* Listagem automática dos repositórios
-* Carrossel de projetos utilizando **Swiper.js**
-* Formulário de contato com validação no frontend
-* Página de confirmação de envio
-* Navegação com menu fixo e rolagem suave
-* Animações e efeitos de transição
-
----
-
-## Estrutura do Projeto
-
-```text id="kwq20h"
-📁 portfolio/
+```text
+src/
+├── components/
+│   ├── navbar/
+│   └── footer/
 │
-├── index.html
-├── success.html
+├── pages/
+│   ├── home/
+│   ├── login/
+│   └── cadastro/
 │
-├── 📁 assets/
-│   ├── 📁 css/
-│   │   └── styles.css
-│   ├── 📁 js/
-│   │   └── scripts.js
-│   ├── 📁 img/
-│   └── 📁 icons/
-│
-└── README.md
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
----
+## 📱 Responsividade
 
-## Tecnologias Utilizadas
+A interface foi desenvolvida para se adaptar a diferentes tamanhos de tela, proporcionando uma boa experiência em:
 
-* **HTML5** — Estruturação do conteúdo
-* **CSS3** — Estilização, responsividade e animações
-* **JavaScript (ES6+)** — Interatividade, consumo de APIs e validações
-* **Swiper.js** — Carrossel responsivo dos projetos
-* **FormSubmit** — Envio de mensagens através do formulário de contato
-* **GitHub API** — Carregamento dinâmico do perfil e dos repositórios
-* **Render** — Hospedagem e deploy da aplicação
+* Smartphones
+* Tablets
+* Notebooks
+* Desktop
 
----
+## ▶️ Como executar o projeto
 
-## Diferenciais do Projeto
+Clone o repositório:
 
-* Layout totalmente **responsivo**
-* Identidade visual em tons de **azul escuro**
-* Integração com dados do **GitHub**
-* Projetos exibidos dinamicamente
-* **Formulário de contato funcional**
-* Animações e transições
-* Interface simples e organizada
+```bash
+git clone https://github.com/phcarneiro9/Blog_Pessoal_React_t85.git
+```
 
----
+Entre na pasta:
 
-## Deploy
+```bash
+cd Blog_Pessoal_React_t85
+```
 
-O portfólio está disponível online através do **Render**:
+Instale as dependências:
 
-🔗 https://portfolio-siui.onrender.com
+```bash
+npm install
+```
 
----
+Execute o projeto:
 
-## Autor
+```bash
+npm run dev
+```
+
+Depois, acesse no navegador o endereço informado pelo Vite, normalmente:
+
+```text
+http://localhost:5173
+```
+
+## 📦 Build
+
+Para gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Para visualizar o build:
+
+```bash
+npm run preview
+```
+
+## 🎯 Objetivo do projeto
+
+O Blog Pessoal foi desenvolvido com o objetivo de colocar em prática conceitos importantes do desenvolvimento Front-end com React, como:
+
+* Componentização
+* React Hooks
+* Rotas
+* TypeScript
+* Responsividade
+* Organização de código
+* Integração entre Front-end e Backend
+
+## 👨‍💻 Autor
 
 **Patrick Carneiro**
 
-GitHub: https://github.com/phcarneiro9
+GitHub: [phcarneiro9](https://github.com/phcarneiro9)
 
 
 
