@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://blogpessoal-2glj.onrender.com'
+    baseURL: 'https://blog-pessoal-pckz.onrender.com'
 })
 
 // Função  cadastrar Usuario
