@@ -4,15 +4,15 @@ import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
-
+ 
 function Cadastro() {
-
+ 
   // Objeto responsavel por Redirecionar o usuario para outra rota
   const navigate = useNavigate();
-
+ 
   // Responsavel por controlar o loader(animação de carregamento)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
+ 
   // Estado Responsável por guardar os dados do usuario que serao
   // persistidos (gravados) no banco de dados da minha API
   const [usuario, setUsuario] = useState<Usuario>({
@@ -24,16 +24,13 @@ function Cadastro() {
   })
   // Estado responsavel por guardar senha no campo confirmar senha
   const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-
-  // tratar o efeito colateral do sucesso do cadastro
-  //redirecionar para pagina de login
-
-  useEffect(() => {
-    if (usuario.id !== 0){
+ 
+  //Tratar do efeito colateral do sucesso do cadastro redirecionar para pagina de login
+  useEffect(()=> {
+    if (usuario.id !==0){
       retornar();
     }
-}, [usuario])
-
+  },[usuario])
 
   // Funçao responsavel por atualizar o estado usuario
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -41,19 +38,19 @@ function Cadastro() {
       ...usuario,
       [e.target.name]: e.target.value,
     })
-
+ 
   }
   // Funçao responsavel por atualizar o estado confirmarSenha
   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
     setConfirmarSenha(e.target.value)
   }
   // Funçao responsavel por enviar uma requisição do tipo POST com os dados do usuário (estado usuario )
-
+ 
   async function cadastrarNovoUsuario(e: SyntheticEvent<HTMLFormElement>) {
-
+ 
     // impede o envio automatico do formulario
     e.preventDefault();
-
+ 
     // Validação da senha digitada
     if (confirmarSenha !== usuario.senha || usuario.senha.length < 8) {
       alert("Senhas não conferem e/ou não possuem pelo menos 8 caracteres");
@@ -61,35 +58,34 @@ function Cadastro() {
       setConfirmarSenha('');
       return;
     }
-
+ 
     setIsLoading(true);
-
+ 
     try {
       await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
       alert("Usuario cadastrado com sucesso!");
-
+ 
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         alert(`Erro ao cadastrar o usuário: ${error.response.status}`);
       } else {
         alert("Erro ao cadastrar o usuário! Verifique a conexão com a API!");
       }
-
+ 
     } finally {
-
+ 
       setIsLoading(false);
     }
-
+ 
   }
-
-  // Função para retornar para pagina de login
+ 
   function retornar() {
     navigate('/');
-
+ 
   }
   console.log(JSON.stringify(usuario))
   console.log(confirmarSenha);
-
+ 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen
@@ -111,7 +107,7 @@ function Cadastro() {
               className="border-2 border-slate-700 rounded p-2"
               value={usuario.nome}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-
+ 
             />
           </div>
           <div className="flex flex-col w-full">
@@ -167,7 +163,7 @@ function Cadastro() {
               type='reset'
               className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
               onClick={retornar}
-            >
+           >
               Cancelar
             </button>
             <button
@@ -179,18 +175,18 @@ function Cadastro() {
               {
                 isLoading ? (
                   <ClipLoader
-
+ 
                     color="#ffffff"
-
+ 
                     size={24}
-
+ 
                   />
-
+ 
                 ) : (
                   <span> Cadastrar </span>
                 )
               }
-
+ 
             </button>
           </div>
         </form >
@@ -198,5 +194,7 @@ function Cadastro() {
     </>
   )
 }
-
+ 
 export default Cadastro
+ 
+ 
