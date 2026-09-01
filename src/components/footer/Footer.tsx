@@ -18,7 +18,7 @@ function Footer() {
       <div className="flex justify-center bg-coffee-900 text-white">
         <div className="container flex flex-col items-center py-4">
           <p className="text-xl font-bold">
-            Blog Yan Ferreira | Copyright: {data}
+            Blog Patrick Carneiro | Copyright: {data}
           </p>
           <p className="text-lg">Acesse minhas redes sociais</p>
           <div className="flex gap-2">
