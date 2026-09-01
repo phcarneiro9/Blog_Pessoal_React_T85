@@ -1,80 +1,93 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useRef, useState, type ReactNode } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
-import axios from "axios";
 import { login } from "../services/Service";
-
-// definir os estados e funcoes disponibilizadas pela context
-interface AuthContextProps {
+import axios from "axios";
+import { ToastAlerta } from "../utils/ToastAlerta";
+ 
+// Definir os Estados e Funções disponibilizadas pela Context
+interface AuthContextProps{
     usuario: UsuarioLogin
     handleLogin(usuario: UsuarioLogin): void
     handleLogout(): void
     isLoading: boolean
+    isLogout: boolean
 }
-
-//quem irá consumir a context
-interface AuthProviderProps {
+ 
+// Quem irá consumir a context
+interface AuthProviderProps{
     children: ReactNode
 }
-
-//Criar o contexto usando a tipagem AuthContextProps
-//O contexto irá disponibilizar os estados e as funcoes globalmente 
+ 
+// Criar o contexto usando a tipagem AuthContextProps
+// O Contexto irá disponibilizar os estados e as funções globalmente
 export const AuthContext = createContext({} as AuthContextProps)
-
-//Iniciar o provedor AuthProvider
-//O provedor ira implemnetar as funcoes e inicializar os estados
+ 
+// Inicializar o provedor AuthProvider
+// O provedor irá implementar as funções e inicializar os estados
 export function AuthProvider({ children }: AuthProviderProps) {
-
-    //Inicializar o estado usuario, que e o tipo UsuarioLogin
+ 
+    // Inicializar o estado usuário, que é do tipo UsuarioLogin
     const [usuario, setUsuario] = useState<UsuarioLogin>({
         id: 0,
-        nome: '',
-        usuario: '',
-        senha: '',
-        foto: '',
-        token: '',
-    });
-
-    //Inicializar o meu estado chamado isLoading
+        nome: "",
+        usuario: "",
+        senha: "",
+        foto: "",
+        token: "",
+    })
+ 
+    // Inicializar o estado isLoading
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    //Implementar a funcao handleLogin(autenticar usuario)
+    const isLogout=useRef(false)
+ 
+    // Implementar a função handleLogin
     async function handleLogin(usuarioLogin: UsuarioLogin) {
-
-
+       
         setIsLoading(true);
-
+ 
         try {
-            await login(`usuarios/logar`, usuarioLogin, setUsuario)
-            alert("Usuario autenticado com sucesso")
-        } catch (error) {
-            if (axios.isAxiosError(error) && error.response) {
-                alert(`Erro ao autenticar o usuário: ${error.response.status}`);
-            } else {
-                alert("Erro ao autenticar o usuário! Verifique a conexão com a API!");
-            }
+            await login(`/usuarios/logar`, usuarioLogin, setUsuario);
+            ToastAlerta("Usuário Autenticado com sucesso!", "sucesso")
 
+            isLogout.current = false
+ 
+        } catch(error) {
+            if (axios.isAxiosError(error) && error.response) {
+                ToastAlerta(`Erro ao autenticar o usuário: ${error.response.status}`, "erro");
+                console.log("Resposta da API: ", error.response.data)
+            } else {
+                ToastAlerta("Erro ao autenticar o usuário! Verifique a conexão com a API!", "erro")
+            }
+ 
         } finally {
             setIsLoading(false);
         }
+       
     }
+ 
+        // Implementar a função handleLogout (desconectar o usuário)
+        function handleLogout() {
 
-    //implem,entar a funcao handleLogout (desconectar o usuario)
-    function handleLogout() {
-        setUsuario(
-            {
+            isLogout.current = true
+
+            setUsuario({
                 id: 0,
-                nome: '',
-                usuario: '',
-                senha: '',
-                foto: '',
-                token: '',
-            }
-        )
-    }
+                nome: "",
+                usuario: "",
+                senha: "",
+                foto: "",
+                token: "",
+            })
 
-    return(
-        <AuthContext.Provider value={{usuario, handleLogin, handleLogout, isLoading}}>
-            {children}
-        </AuthContext.Provider>
-    )
+            ToastAlerta("usuario desconectado com sucesso", 'sucesso')
+        }
+ 
+        return (
+            <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, isLogout: isLogout.current}}>
+                { children }
+            </AuthContext.Provider>
+ 
+        )
+ 
 }

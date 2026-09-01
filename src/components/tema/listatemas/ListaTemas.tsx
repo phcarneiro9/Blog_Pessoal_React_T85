@@ -6,6 +6,7 @@ import { buscar } from "../../../services/Service";
 import CardTema from "../cardtema/CardTema"
 import { SyncLoader } from "react-spinners";
 import axios from "axios";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaTemas() {
     // Objeto responsavel por redirecionar o usuario para outra rota
@@ -27,7 +28,7 @@ function ListaTemas() {
     //useEffect para monitorar o token
     useEffect(()=>{
         if(token === ''){
-            alert("Você precisa estar logado!");
+            ToastAlerta("Você precisa estar logado!", 'info');
             navigate('/');
         }
     },[token])
@@ -47,7 +48,7 @@ function ListaTemas() {
             })
         } catch (error) {
             if (axios.isAxiosError(error) && error.response?.status===401) {
-                alert(`Erro ao consultar os temas: ${error.response.status}`);
+                ToastAlerta(`Erro ao consultar os temas: ${error.response.status}`, 'erro');
                 handleLogout();
             }
         } finally {
@@ -59,7 +60,7 @@ function ListaTemas() {
         <>
             {isLoading && (
                 <div className="flex justify-center w-full my-8">
-                    <SyncLoader color="#312e81" size={32} />
+                    <SyncLoader color="#0D1321" size={32} />
                 </div>
             )}
 

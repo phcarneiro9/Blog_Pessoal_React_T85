@@ -4,6 +4,7 @@ import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../utils/ToastAlerta";
  
 function Cadastro() {
  
@@ -53,7 +54,7 @@ function Cadastro() {
  
     // Validação da senha digitada
     if (confirmarSenha !== usuario.senha || usuario.senha.length < 8) {
-      alert("Senhas não conferem e/ou não possuem pelo menos 8 caracteres");
+      ToastAlerta("Senhas não conferem e/ou não possuem pelo menos 8 caracteres", 'erro');
       setUsuario({ ...usuario, senha: '' });
       setConfirmarSenha('');
       return;
@@ -63,13 +64,13 @@ function Cadastro() {
  
     try {
       await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-      alert("Usuario cadastrado com sucesso!");
+      ToastAlerta("Usuario cadastrado com sucesso!", 'sucesso');
  
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        alert(`Erro ao cadastrar o usuário: ${error.response.status}`);
+        ToastAlerta(`Erro ao cadastrar o usuário: ${error.response.status}`, 'erro');
       } else {
-        alert("Erro ao cadastrar o usuário! Verifique a conexão com a API!");
+        ToastAlerta("Erro ao cadastrar o usuário! Verifique a conexão com a API!", 'erro');
       }
  
     } finally {
@@ -96,7 +97,7 @@ function Cadastro() {
         ></div>
         <form className='flex justify-center items-center flex-col w-2/3 gap-3'
           onSubmit={cadastrarNovoUsuario}>
-          <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
+          <h2 className='text-coffee-900 text-5xl'>Cadastrar</h2>
           <div className="flex flex-col w-full">
             <label htmlFor="nome">Nome</label>
             <input
@@ -104,7 +105,7 @@ function Cadastro() {
               id="nome"
               name="nome"
               placeholder="Nome"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-coffee-700 rounded p-2"
               value={usuario.nome}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
  
@@ -117,7 +118,7 @@ function Cadastro() {
               id="usuario"
               name="usuario"
               placeholder="Usuario"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-coffee-700 rounded p-2"
               value={usuario.usuario}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
@@ -129,7 +130,7 @@ function Cadastro() {
               id="foto"
               name="foto"
               placeholder="Foto"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-coffee-700 rounded p-2"
               value={usuario.foto}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
@@ -141,7 +142,7 @@ function Cadastro() {
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-coffee-700 rounded p-2"
               value={usuario.senha}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
@@ -153,7 +154,7 @@ function Cadastro() {
               id="confirmarSenha"
               name="confirmarSenha"
               placeholder="Confirmar Senha"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-coffee-700 rounded p-2"
               value={confirmarSenha}
               onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
             />
@@ -168,8 +169,8 @@ function Cadastro() {
             </button>
             <button
               type='submit'
-              className='rounded text-white bg-indigo-400
-                    hover:bg-indigo-900 w-1/2 py-2
+              className='rounded text-white bg-cyan-600
+                    hover:bg-coffee-800 w-1/2 py-2
                     flex justify-center'
             >
               {

@@ -5,6 +5,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import type Tema from "../../../models/Temas";
 import { buscar, deletar } from "../../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
  
 function DeletarTema() {
  
@@ -38,7 +39,7 @@ function DeletarTema() {
  
     }catch (error){
       if (axios.isAxiosError(error)){
-          alert(`Erro ao cadastrar o tema: ${error.response?.status}`);
+          ToastAlerta(`Erro ao cadastrar o tema: ${error.response?.status}`, 'erro');
           if(error.response?.status === 401){
             handleLogout();
           }
@@ -61,7 +62,7 @@ function DeletarTema() {
   // useEffect para monitorar o token
   useEffect( () => {
     if (token === ''){
-      alert("Você precisa estar logado!");
+      ToastAlerta("Você precisa estar logado!", 'info');
       navigate('/');
     }
   }, [token])
@@ -77,11 +78,11 @@ function DeletarTema() {
           headers: { Authorization: token }
         })
  
-        alert('Tema deletado com sucessso!')
+        ToastAlerta('Tema deletado com sucessso!', 'sucesso')
  
     }catch (error){
       if (axios.isAxiosError(error)){
-          alert(`Erro ao cadastrar o tema: ${error.response?.status}`);
+          ToastAlerta(`Erro ao deletar o tema: ${error.response?.status}`, 'erro');
           if(error.response?.status === 401){
             handleLogout();
           }
@@ -106,20 +107,20 @@ function DeletarTema() {
       </p>
  
       <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-        <header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
+        <header className="py-2 px-6 bg-coffee-600 text-white font-bold text-2xl">
           Tema
         </header>
  
-        <p className="p-8 text-3xl bg-slate-200 h-full">{tema.descricao}</p>
+        <p className="p-8 text-3xl bg-coffee-100 h-full">{tema.descricao}</p>
  
         <div className="flex">
-          <button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}>
+          <button className="text-coffee-50 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}>
             Não
           </button>
  
           <button
-            className="w-full text-slate-100 bg-indigo-400
-                      hover:bg-indigo-600 flex items-center justify-center"
+            className="w-full text-coffee-50 bg-coffee-400
+                      hover:bg-coffee-600 flex items-center justify-center"
             onClick={deletarTema}
           >
             {

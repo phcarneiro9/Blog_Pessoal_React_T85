@@ -5,9 +5,9 @@ function Home() {
 
   return (
     <>
-      <div className="flex bg-indigo-900 justify-center">
+      <div className="flex bg-coffee-900 justify-center">
 
-        <div className="container grid grid-cols-1 md:grid-cols-2 text-white">
+        <div className="container grid grid-cols-1 md:grid-cols-2 text-coffee-300">
 
           {/* conteudo de texto*/}
           <div className="flex flex-col gap-4 items-center justify-center py-4" >
@@ -25,7 +25,7 @@ function Home() {
           {/* Imagem da pagina home*/}
           <div className="flex justify-center">
             <img
-              src="https://i.imgur.com/fyfri1v.png"
+              src="https://ik.imagekit.io/eosfuraqd/Developer%20activity-bro.svg"
               alt="Imagem da pagina home"
               className="w-2/3" />
           </div>
