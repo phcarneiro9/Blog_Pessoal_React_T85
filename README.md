@@ -57,3 +57,5 @@ Praticar **React, TypeScript, componentização, rotas, responsividade e integra
 **Patrick Carneiro**
 
 [GitHub](https://github.com/phcarneiro9)
+
+<!-- README refresh -->
