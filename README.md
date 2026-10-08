@@ -1,120 +1,59 @@
-# 📝 Blog Pessoal React
+# 📝 Blog Pessoal — React
 
-Projeto de **Blog Pessoal** desenvolvido em **React + TypeScript**, com o objetivo de criar uma aplicação moderna para publicação e compartilhamento de conteúdos.
+Front-end de um **Blog Pessoal** desenvolvido com React e TypeScript, com foco em componentização, navegação e criação de interfaces responsivas.
 
-O projeto utiliza componentização, organização de páginas e componentes reutilizáveis, seguindo boas práticas de desenvolvimento Front-end.
+## 🚀 Funcionalidades
 
-## 🚀 Tecnologias utilizadas
+- Página inicial
+- Cadastro de usuários
+- Login
+- Navegação entre páginas
+- Componentes reutilizáveis
+- Rotas
+- Layout responsivo
+- Estrutura preparada para integração com backend
 
-* React
-* TypeScript
-* Vite
-* Tailwind CSS
-* React Router DOM
+## 🛠️ Tecnologias
 
-## ✨ Funcionalidades
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router DOM
 
-* Página inicial
-* Cadastro de usuários
-* Login
-* Navegação entre páginas
-* Componentes reutilizáveis
-* Navbar
-* Footer
-* Layout responsivo
-* Estrutura preparada para integração com o Backend
-
-## 📂 Estrutura do projeto
+## 📂 Estrutura
 
 ```text
 src/
 ├── components/
 │   ├── navbar/
 │   └── footer/
-│
 ├── pages/
 │   ├── home/
 │   ├── login/
 │   └── cadastro/
-│
 ├── App.tsx
 ├── main.tsx
 └── index.css
 ```
 
-## 📱 Responsividade
-
-A interface foi desenvolvida para se adaptar a diferentes tamanhos de tela, proporcionando uma boa experiência em:
-
-* Smartphones
-* Tablets
-* Notebooks
-* Desktop
-
-## ▶️ Como executar o projeto
-
-Clone o repositório:
+## ▶️ Como executar
 
 ```bash
-git clone https://github.com/phcarneiro9/Blog_Pessoal_React_t85.git
-```
-
-Entre na pasta:
-
-```bash
-cd Blog_Pessoal_React_t85
-```
-
-Instale as dependências:
-
-```bash
+git clone https://github.com/phcarneiro9/Blog_Pessoal_React_T85.git
+cd Blog_Pessoal_React_T85
 npm install
-```
-
-Execute o projeto:
-
-```bash
 npm run dev
 ```
 
-Depois, acesse no navegador o endereço informado pelo Vite, normalmente:
+A aplicação será executada pelo Vite, normalmente em `http://localhost:5173`.
 
-```text
-http://localhost:5173
-```
+## 🎯 Objetivo
 
-## 📦 Build
-
-Para gerar a versão de produção:
-
-```bash
-npm run build
-```
-
-Para visualizar o build:
-
-```bash
-npm run preview
-```
-
-## 🎯 Objetivo do projeto
-
-O Blog Pessoal foi desenvolvido com o objetivo de colocar em prática conceitos importantes do desenvolvimento Front-end com React, como:
-
-* Componentização
-* React Hooks
-* Rotas
-* TypeScript
-* Responsividade
-* Organização de código
-* Integração entre Front-end e Backend
+Praticar **React, TypeScript, componentização, rotas, responsividade e integração entre Front-end e Back-end**.
 
 ## 👨‍💻 Autor
 
 **Patrick Carneiro**
 
-GitHub: [phcarneiro9](https://github.com/phcarneiro9)
-
-
-
-
+[GitHub](https://github.com/phcarneiro9)
